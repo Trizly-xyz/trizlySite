@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trizly – Launching Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trizly is building tools and bots for the next generation of communities. Launching soon." />
+
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, #ff4b6e, #181826 55%, #050814);
+      --accent: #ff4b6e;
+      --accent-soft: rgba(255, 75, 110, 0.16);
+      --card-bg: rgba(9, 11, 24, 0.88);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --blur: 20px;
+      --transition-fast: 160ms ease-out;
+      --transition-med: 220ms ease-out;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .bg-orbit {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-orbit::before,
+    .bg-orbit::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.6;
+    }
+
+    .bg-orbit::before {
+      background: #ff4b6e;
+      top: -120px;
+      left: -80px;
+    }
+
+    .bg-orbit::after {
+      background: #6366f1;
+      bottom: -160px;
+      right: -40px;
+    }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(var(--blur));
+      padding: 28px 24px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 780px) {
+      .card {
+        grid-template-columns: 1fr;
+        padding: 22px 18px 20px;
+      }
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 75, 110, 0.9);
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 0%, #ffffff, #ff4b6e);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: #111;
+    }
+
+    .logo-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 3vw, 34px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #f97373, #f97316, #fef08a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 34rem;
+    }
+
+    .countdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .countdown-segment {
+      flex: 1 1 90px;
+      min-width: 90px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148,163,184,0.35);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-segment span.value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .countdown-segment span.label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 13px;
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      border: 1px solid;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #ff4b6e, #fb923c);
+      border-color: rgba(255,255,255,0.2);
+      color: #111;
+      font-weight: 600;
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.7);
+      border-color: rgba(148,163,184,0.5);
+      color: var(--text-muted);
+    }
+
+    .side-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.45);
+      background: rgba(15,23,42,0.92);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .side-main-text {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #e5e7eb;
+    }
+
+    .side-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .side-item {
+      display: flex;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .side-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      background: rgba(15,23,42,0.8);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orbit"></div>
+
+  <div class="page-wrap">
+    <main class="card">
+
+      <!-- LEFT SIDE -->
+      <section class="card-inner">
+        <div class="pill-tag">
+          <span class="pill-dot"></span>
+          <span>Trizly · Launch Sequence Armed</span>
+        </div>
+
+        <div class="logo-row">
+          <div class="logo-mark">T</div>
+          <div class="logo-text">
+            <div class="logo-name">TRIZLY</div>
+            <div class="logo-sub">Bots · Infrastructure · Automation</div>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          A new stack of <span>discord automation</span> is coming.
+        </h1>
+
+        <p class="hero-text">
+          Trizly is building modern, production-grade Discord bots, automation pipelines, and backend tools for communities that want more than cookie-cutter systems.
+        </p>
+
+        <!-- COUNTDOWN -->
+        <div id="countdown" class="countdown" data-live="true">
+          <div class="countdown-segment"><span class="value" id="days">00</span><span class="label">Days</span></div>
+          <div class="countdown-segment"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
+          <div class="countdown-segment"><span class="value" id="minutes">00</span><span class="label">Minutes</span></div>
+          <div class="countdown-segment"><span class="value" id="seconds">00</span><span class="label">Seconds</span></div>
+        </div>
+
+        <p class="hero-text">
+          Countdown to early access. New systems, new APIs, and a new era of Discord infrastructure.
+        </p>
+
+        <div class="actions">
+          <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">💬 Join the Early Discord</a>
+          <a href="mailto:trizl@trizly.xyz" class="btn-ghost">✉️ Contact the Team</a>
+        </div>
+
+      </section>
+
+      <!-- RIGHT SIDE -->
+      <aside class="card-inner side-card">
+
+        <div class="side-header">
+          <span class="side-title">What is Trizly?</span>
+        </div>
+
+        <p class="side-main-text">
+          Trizly is a development group constructing high-performance Discord automation and Roblox verification systems designed for ERLC and similar communities. Everything is coded from scratch — designed for speed, security, and scalability.
+        </p>
+
+        <ul class="side-list">
+          <li class="side-item"><span class="side-bullet">①</span><span><strong>Modern automation:</strong> sessions, moderation, tickets, blacklists, logging, affiliations, giveaways, and more.</span></li>
+          <li class="side-item"><span class="side-bullet">②</span><span><strong>Roblox verification ecosystem:</strong> full API, Discord integration, identity pipeline, and developer tools.</span></li>
+          <li class="side-item"><span class="side-bullet">③</span><span><strong>Unified backend:</strong> bots, APIs, dashboards, and services all connected through a single central system.</span></li>
+        </ul>
+
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 8px 0;" />
+
+        <div class="side-header">
+          <span class="side-title">We’re Hiring</span>
+        </div>
+
+        <p class="side-main-text">
+          Trizly is recruiting leadership and developers to help build our ecosystem. These roles help develop systems used across dozens of ERLC communities.
+        </p>
+
+        <ul class="side-list">
+
+          <li class="side-item">
+            <span class="side-bullet">COO</span>
+            <span>
+              Oversees operations, workflows, partnerships, and project direction.<br>
+              <strong>Requirements:</strong> basic coding skill, leadership ability, planning ability.<br>
+              <strong>Benefits:</strong> custom email, 10–15% payroll listing, portfolio page.
+            </span>
+          </li>
+
+          <li class="side-item">
+            <span class="side-bullet">CTO</span>
+            <span>
+              Leads architecture, API planning, system structure, and technical decisions.<br>
+              <strong>Requirements:</strong> advanced coding, backend/APIs, Discord.js knowledge.<br>
+              <strong>Benefits:</strong> custom email, 10–15% payroll listing, portfolio page.
+            </span>
+          </li>
+
+          <li class="side-item">
+            <span class="side-bullet">DEV</span>
+            <span>
+              Builds automation systems, bots, dashboards, and backend features.<br>
+              <strong>Requirements:</strong> fluent coding skill in Node.js/Discord.js.<br>
+              <strong>Benefits:</strong> portfolio page, early API access, dev-exclusive tools.
+            </span>
+          </li>
+
+        </ul>
+
+        <p class="side-main-text">
+          Ready to build the next generation of ERLC development? Join the team and help build systems that actually make a difference.
+        </p>
+
+        <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary" style="margin-top: 8px; display: inline-flex;">
+          🚀 Apply Now
+        </a>
+
+      </aside>
+
+    </main>
+  </div>
+
+  <script>
+    const launchDate = new Date("2025-12-31T23:59:59-07:00");
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    function pad(n) { return String(n).padStart(2, "0"); }
+
+    function update() {
+      const now = new Date();
+      const diff = launchDate - now;
+
+      if (diff <= 0) return;
+
+      const s = Math.floor(diff / 1000);
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      const m = Math.floor((s % 3600) / 60);
+      const sec = s % 60;
+
+      daysEl.textContent = pad(d);
+      hoursEl.textContent = pad(h);
+      minutesEl.textContent = pad(m);
+      secondsEl.textContent = pad(sec);
+    }
+
+    update();
+    setInterval(update, 1000);
+  </script>
+
+</body>
+</html>

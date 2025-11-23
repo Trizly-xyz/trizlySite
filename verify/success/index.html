@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verification Complete – Trizly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --accent: #ff4b6e;
+      --accent-soft: rgba(255, 75, 110, 0.16);
+      --bg: radial-gradient(circle at top left, #ff4b6e, #181826 55%, #050814);
+      --card-bg: rgba(9, 11, 24, 0.88);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --radius-lg: 26px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", Segoe UI, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .bg-orbit {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-orbit::before,
+    .bg-orbit::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.6;
+    }
+    .bg-orbit::before {
+      background: #ff4b6e;
+      top: -120px;
+      left: -80px;
+    }
+    .bg-orbit::after {
+      background: #6366f1;
+      bottom: -160px;
+      right: -40px;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+      max-width: 460px;
+      padding: 36px 26px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 26px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.6);
+      margin-bottom: 16px;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .subname {
+      margin-top: 2px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .userid {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .success-box {
+      margin-top: 26px;
+      padding: 18px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .success-text {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orbit"></div>
+
+  <div class="card" id="card">
+    <img id="avatar" class="avatar" src="" alt="Avatar">
+
+    <div class="name" id="name">Loading…</div>
+    <div class="subname" id="username"></div>
+    <div class="userid" id="userid"></div>
+
+    <div class="success-box">
+      <div class="success-text">Verification Successful</div>
+      <div class="hint">You may now close this page.</div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const avatar = params.get("avatar");
+    const displayName = params.get("displayName");
+    const username = params.get("username");
+    const userId = params.get("userId");
+
+    document.getElementById("avatar").src = avatar || "";
+    document.getElementById("name").textContent = displayName || "Unknown User";
+    document.getElementById("username").textContent = username ? `@${username}` : "";
+    document.getElementById("userid").textContent = userId ? `User ID: ${userId}` : "";
+  </script>
+
+</body>
+</html>

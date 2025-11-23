@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Roblox Verification</title>
+  <style>
+    body {
+      background: #05060f;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Roblox Verification</h2>
+  <p>Redirecting you to Roblox…</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    if (!token) {
+      document.body.innerHTML = "<h2>Error: Missing token</h2>";
+      throw new Error("Missing token");
+    }
+
+    // 🚀 THIS is what actually sends users to Roblox OAuth
+    window.location.href = `https://api.trizly.xyz/verify/roblox/start?session=${token}`;
+  </script>
+
+</body>
+</html>
