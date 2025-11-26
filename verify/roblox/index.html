@@ -15,20 +15,19 @@
 </head>
 <body>
 
-  <h2>Roblox Verification</h2>
-  <p>Redirecting you to Roblox…</p>
+  <h2>Redirecting...</h2>
+  <p>This page is no longer used. The verification flow now happens automatically.</p>
+  <p>If you're seeing this, you may have bookmarked an old link.</p>
+  <p><a href="/" style="color: #4af; text-decoration: underline;">Return to home</a></p>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-
-    if (!token) {
-      document.body.innerHTML = "<h2>Error: Missing token</h2>";
-      throw new Error("Missing token");
-    }
-
-    // 🚀 THIS is what actually sends users to Roblox OAuth
-    window.location.href = `https://api.trizly.xyz/verify/roblox/start?session=${token}`;
+    // Legacy redirect - this page should not be reached in the new flow
+    console.warn("[DEPRECATED] /verify/roblox is no longer part of the verification flow");
+    
+    // Redirect to home after 3 seconds
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 3000);
   </script>
 
 </body>

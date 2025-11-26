@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verify Your Account – Trizly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --accent: #ff4b6e;
+      --bg: radial-gradient(circle at top left, #ff4b6e, #181826 55%, #050814);
+      --card-bg: rgba(9, 11, 24, 0.88);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --radius-lg: 26px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", Segoe UI, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .bg-orbit {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-orbit::before,
+    .bg-orbit::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.6;
+    }
+    .bg-orbit::before {
+      background: #ff4b6e;
+      top: -120px;
+      left: -80px;
+    }
+    .bg-orbit::after {
+      background: #6366f1;
+      bottom: -160px;
+      right: -40px;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+      max-width: 500px;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      background: #5865F2;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #4752C4;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+    }
+
+    .btn:disabled {
+      background: #555;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .error {
+      background: rgba(255, 70, 70, 0.15);
+      border: 1px solid rgba(255, 70, 70, 0.4);
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 20px;
+      color: #ff9999;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .loading {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orbit"></div>
+
+  <div class="card">
+    <div class="icon">🔗</div>
+    <h1>Link Your Accounts</h1>
+    <p>Connect your Discord and Roblox accounts to get verified!</p>
+    <button id="verifyBtn" class="btn">Start Verification</button>
+    <div class="loading" id="loading" style="display: none;">Processing...</div>
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const discordId = params.get('d_id');
+    const guildId = params.get('g_id');
+
+    const verifyBtn = document.getElementById('verifyBtn');
+    const loading = document.getElementById('loading');
+    const errorDiv = document.getElementById('error');
+
+    function showError(message) {
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+      loading.style.display = 'none';
+      verifyBtn.disabled = false;
+    }
+
+    // Validate parameters
+    if (!discordId || !guildId) {
+      showError('❌ Missing Discord or Guild ID. Please use the /verify command in Discord.');
+      verifyBtn.disabled = true;
+    }
+
+    verifyBtn.addEventListener('click', async () => {
+      if (!discordId || !guildId) return;
+
+      verifyBtn.disabled = true;
+      loading.style.display = 'block';
+      errorDiv.style.display = 'none';
+
+      try {
+        // Build Discord OAuth URL
+        const clientId = '1441999195601899622'; // Your Discord CLIENT_ID from .env
+        const redirectUri = encodeURIComponent(window.location.origin + '/verify/callback');
+        const state = encodeURIComponent(`${discordId}:${guildId}`);
+        
+        const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify&state=${state}`;
+        
+        // Redirect to Discord OAuth
+        window.location.href = discordAuthUrl;
+      } catch (err) {
+        showError('❌ Failed to start verification: ' + err.message);
+      }
+    });
+  </script>
+
+</body>
+</html>

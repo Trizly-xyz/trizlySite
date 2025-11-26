@@ -29,8 +29,8 @@
       throw new Error("Missing code");
     }
 
-    // Send code to your backend API
-    fetch("https://api.trizly.xyz/verify/callback", {
+    // Send to Cloudflare Worker to process Discord OAuth
+    fetch("https://verify.trizly.xyz/verify/callback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code, state })
@@ -42,8 +42,13 @@
         return;
       }
 
-      // Redirect to next step
-      window.location.href = `/verify/roblox?token=${data.token}`;
+      if (!data.nextRobloxStartUrl) {
+        document.body.innerHTML = "<h2>Error</h2><p>Missing Roblox authorization URL</p>";
+        return;
+      }
+
+      // Redirect directly to Roblox OAuth (via worker)
+      window.location.href = data.nextRobloxStartUrl;
     })
     .catch(err => {
       document.body.innerHTML = "<h2>Verification Failed</h2><p>" + err + "</p>";
