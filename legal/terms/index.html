@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trizly — Terms of Service</title>
+  <meta name="description" content="Terms of Service for Trizly Operations, including Lumi and all future services." />
+  <meta property="og:title" content="Trizly Terms of Service" />
+  <meta property="og:description" content="Rules and policies governing all Trizly services." />
+  <meta property="og:image" content="https://example.com/trizly-logo.png" />
+  <meta name="theme-color" content="#fb923c" />
+  <link rel="icon" href="https://example.com/trizly-logo.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: { brand:'#fb923c', dark:'#050712' },
+          boxShadow: {
+            glow:'0 0 0 4px rgb(251 146 60 / 0.15), 0 10px 30px -10px rgb(0 0 0 / 0.6)'
+          },
+          backgroundImage: {
+            grid: "linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px)",
+            glow: 'radial-gradient(65% 65% at 50% -10%, rgb(251 146 60 / 0.22), transparent 65%)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .prose h2 { margin-top: 1.5rem; font-size: 1.3rem; font-weight: 800 }
+    .prose p { color: rgba(255,255,255,.82) }
+    .prose li { color: rgba(255,255,255,.78) }
+    .toc a { color: rgba(255,255,255,.75) }
+    .toc a:hover { color:white }
+  </style>
+</head>
+
+<body class="bg-dark text-white font-sans">
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 bg-grid bg-[length:26px_26px]"></div>
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 bg-glow"></div>
+
+  <header class="sticky top-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://example.com/trizly-logo.png" alt="Trizly" class="w-9 h-9 rounded-xl shadow-glow"/>
+        <strong class="text-lg">Trizly Operations</strong>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/" class="hidden sm:inline text-white/70 hover:text-white">Home</a>
+        <a href="https://discord.gg/YOURSERVER" class="px-4 py-2 rounded-xl border border-white/20 text-sm hover:bg-white/10">Support</a>
+        <a href="/privacy.html" class="px-4 py-2 rounded-xl bg-brand text-black font-semibold text-sm hover:bg-orange-400 shadow-glow">Privacy Policy</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 px-6 pb-16">
+    <section class="max-w-6xl mx-auto text-center pt-12 pb-6">
+      <h1 class="text-3xl md:text-5xl font-extrabold">Terms of Service</h1>
+      <p class="mt-3 text-white/75">Last updated: <span id="updated"></span></p>
+    </section>
+
+    <section class="max-w-6xl mx-auto grid lg:grid-cols-[260px_1fr] gap-8">
+      <aside class="toc hidden lg:block">
+        <div class="sticky top-24 bg-white/5 border border-white/10 p-4 rounded-2xl">
+          <p class="text-xs uppercase text-white/50 mb-2">On this page</p>
+          <nav class="grid gap-2 text-sm">
+            <a href="#acceptance">1. Acceptance</a>
+            <a href="#scope">2. Scope</a>
+            <a href="#eligibility">3. Eligibility</a>
+            <a href="#usage">4. Usage</a>
+            <a href="#config">5. Configuration</a>
+            <a href="#fairuse">6. Limits</a>
+            <a href="#prohibited">7. Prohibited Conduct</a>
+            <a href="#availability">8. Availability</a>
+            <a href="#liability">9. Liability</a>
+            <a href="#termination">10. Termination</a>
+            <a href="#law">11. Governing Law</a>
+            <a href="#contact">12. Contact</a>
+          </nav>
+        </div>
+      </aside>
+
+      <article class="prose max-w-none space-y-6">
+
+        <section id="acceptance" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>1. Acceptance</h2>
+          <p>
+            By inviting, using, or interacting with any Trizly service—including Lumi—you agree to these Terms.
+            If you do not agree, you must not use the services.
+          </p>
+        </section>
+
+        <section id="scope" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>2. Scope</h2>
+          <p>
+            These Terms apply to all present and future Trizly products, including Lumi, APIs,
+            dashboards, websites, and integrations.
+          </p>
+        </section>
+
+        <section id="eligibility" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>3. Eligibility</h2>
+          <p>You must meet the minimum age required to use Discord (typically 13+ or higher by region).</p>
+        </section>
+
+        <section id="usage" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>4. Usage Rules</h2>
+          <ul class="list-disc list-inside">
+            <li>No reverse engineering, exploiting, or unauthorized access.</li>
+            <li>No reselling or rebranding of Trizly services.</li>
+            <li>No violating Discord ToS or community guidelines.</li>
+          </ul>
+        </section>
+
+        <section id="config" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>5. Server Configuration</h2>
+          <p>Server owners/admins are responsible for permissions, bot actions, and automations they enable.</p>
+        </section>
+
+        <section id="fairuse" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>6. Limits & Fair Use</h2>
+          <p>We may rate-limit, throttle, or restrict features to maintain service stability.</p>
+        </section>
+
+        <section id="prohibited" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>7. Prohibited Conduct</h2>
+          <ul class="list-disc list-inside">
+            <li>Harassment, doxxing, or illegal activity.</li>
+            <li>Game API exploitation (ER:LC or similar).</li>
+            <li>Attempting to disrupt Trizly infrastructure.</li>
+          </ul>
+        </section>
+
+        <section id="availability" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>8. Availability</h2>
+          <p>Services are provided “as-is” and without guaranteed uptime.</p>
+        </section>
+
+        <section id="liability" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>9. Liability</h2>
+          <p>
+            To the maximum extent allowed by law, Trizly is not liable for losses, damages,
+            or misuse of the service. Your sole remedy is discontinuation.
+          </p>
+        </section>
+
+        <section id="termination" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>10. Termination</h2>
+          <p>
+            We may suspend or terminate access for violations, abuse, or security concerns.
+            You can remove any Trizly bot at any time.
+          </p>
+        </section>
+
+        <section id="law" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>11. Governing Law</h2>
+          <p>These Terms follow the laws of your local jurisdiction unless platform rules require otherwise.</p>
+        </section>
+
+        <section id="contact" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>12. Contact</h2>
+          <p>Support: <a class="underline" href="https://discord.gg/YOURSERVER">Discord Support Server</a></p>
+        </section>
+
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const d = new Date();
+    document.getElementById("updated").textContent =
+      d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
+  </script>
+</body>
+</html>

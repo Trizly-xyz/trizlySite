@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trizly — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Trizly Operations, including Lumi and all associated services." />
+  <meta property="og:title" content="Trizly Privacy Policy" />
+  <meta property="og:description" content="How Trizly collects, stores, uses, and protects your data." />
+  <meta property="og:image" content="https://example.com/trizly-logo.png" />
+  <meta name="theme-color" content="#fb923c" />
+  <link rel="icon" href="https://example.com/trizly-logo.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: { brand:'#fb923c', dark:'#050712' },
+          boxShadow: { glow:'0 0 0 4px rgb(251 146 60 / 0.15), 0 10px 30px -10px rgb(0 0 0 / 0.6)' },
+          backgroundImage: {
+            grid: "linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px)",
+            glow: 'radial-gradient(65% 65% at 50% -10%, rgb(251 146 60 / 0.22), transparent 65%)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .prose h2 { margin-top: 1.5rem; font-size: 1.3rem; font-weight: 800 }
+    .prose p { color: rgba(255,255,255,.82) }
+    .prose li { color: rgba(255,255,255,.78) }
+    .toc a { color: rgba(255,255,255,.75) }
+    .toc a:hover { color:white }
+  </style>
+</head>
+
+<body class="bg-dark text-white font-sans">
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 bg-grid bg-[length:26px_26px]"></div>
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 bg-glow"></div>
+
+  <header class="sticky top-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://example.com/trizly-logo.png" alt="Trizly" class="w-9 h-9 rounded-xl shadow-glow"/>
+        <strong class="text-lg">Trizly Operations</strong>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/" class="hidden sm:inline text-white/70 hover:text-white">Home</a>
+        <a href="https://discord.gg/YOURSERVER" class="px-4 py-2 rounded-xl border border-white/20 hover:bg-white/10">Support</a>
+        <a href="/terms.html" class="px-4 py-2 rounded-xl bg-brand text-black font-semibold hover:bg-orange-400 shadow-glow">Terms of Service</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 px-6 pb-16">
+    <section class="max-w-6xl mx-auto text-center pt-12 pb-6">
+      <h1 class="text-3xl md:text-5xl font-extrabold">Privacy Policy</h1>
+      <p class="mt-3 text-white/75">Last updated: <span id="updated"></span></p>
+    </section>
+
+    <section class="max-w-6xl mx-auto grid lg:grid-cols-[260px_1fr] gap-8">
+      <aside class="toc hidden lg:block">
+        <div class="sticky top-24 bg-white/5 border border-white/10 p-4 rounded-2xl">
+          <p class="text-xs uppercase text-white/50 mb-2">On this page</p>
+          <nav class="grid gap-2 text-sm">
+            <a href="#intro">1. Overview</a>
+            <a href="#data">2. Data We Collect</a>
+            <a href="#usage">3. How We Use Data</a>
+            <a href="#legal">4. Legal Basis</a>
+            <a href="#sharing">5. Data Sharing</a>
+            <a href="#retention">6. Retention</a>
+            <a href="#security">7. Security</a>
+            <a href="#rights">8. Your Rights</a>
+            <a href="#children">9. Children</a>
+            <a href="#changes">10. Changes</a>
+            <a href="#contact">11. Contact</a>
+          </nav>
+        </div>
+      </aside>
+
+      <article class="prose max-w-none space-y-6">
+
+        <section id="intro" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>1. Overview</h2>
+          <p>
+            This Privacy Policy explains how Trizly Operations (“we”, “us”) collects,
+            uses, stores, and protects data processed through Lumi and all Trizly services.
+          </p>
+        </section>
+
+        <section id="data" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>2. Data We Collect</h2>
+          <ul class="list-disc list-inside">
+            <li>Discord IDs (users, roles, channels, guilds)</li>
+            <li>Server configuration settings</li>
+            <li>Bot logs (actions performed, timestamps, executor, target)</li>
+            <li>Optional integrations (e.g., ER:LC API keys if provided)</li>
+            <li>Web dashboard session identifiers</li>
+            <li>Error logs and analytics</li>
+          </ul>
+        </section>
+
+        <section id="usage" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>3. How We Use Data</h2>
+          <ul class="list-disc list-inside">
+            <li>Operate Lumi and Trizly services</li>
+            <li>Provide moderation and automation features</li>
+            <li>Improve stability and detect abuse</li>
+            <li>Enable server configuration persistence</li>
+            <li>Troubleshoot errors</li>
+          </ul>
+        </section>
+
+        <section id="legal" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>4. Legal Basis</h2>
+          <p>We process data under legitimate interests (functionality & security) and user consent (settings you configure).</p>
+        </section>
+
+        <section id="sharing" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>5. Data Sharing</h2>
+          <p>We do not sell your data.</p>
+          <p>We only share data with:</p>
+          <ul class="list-disc list-inside">
+            <li>Discord (normal bot operations)</li>
+            <li>Roblox/ER:LC API (if you enable integrations)</li>
+            <li>Cloud hosting providers (for processing the bot)</li>
+          </ul>
+        </section>
+
+        <section id="retention" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>6. Data Retention</h2>
+          <p>Bot logs are retained for a reasonable period for support and are automatically pruned.</p>
+        </section>
+
+        <section id="security" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>7. Security</h2>
+          <p>We use industry-standard methods to protect data, but cannot guarantee absolute security.</p>
+        </section>
+
+        <section id="rights" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>8. Your Rights</h2>
+          <ul class="list-disc list-inside">
+            <li>Request server data deletion</li>
+            <li>Opt out by removing the bot</li>
+            <li>Request configuration wipes</li>
+          </ul>
+        </section>
+
+        <section id="children" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>9. Children</h2>
+          <p>We do not knowingly collect data from children under the minimum Discord age limit.</p>
+        </section>
+
+        <section id="changes" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>10. Changes</h2>
+          <p>We may update this Privacy Policy. Continued use means acceptance of updates.</p>
+        </section>
+
+        <section id="contact" class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h2>11. Contact</h2>
+          <p>Support: <a class="underline" href="https://discord.gg/YOURSERVER">Discord Support Server</a></p>
+        </section>
+
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const d = new Date();
+    document.getElementById("updated").textContent =
+      d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
+  </script>
+
+</body>
+</html>
