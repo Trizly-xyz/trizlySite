@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Work</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- RESET ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #eaeaea;
+  background: #0f0f0f;
+}
+
+/* ---------- PAGE WRAPPER ---------- */
+.wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  margin-bottom: 42px;
+}
+
+.header h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 700px;
+}
+
+/* ---------- PROJECT CARD ---------- */
+.project {
+  background: rgba(20,20,20,0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+  padding: 28px 28px 30px;
+  margin-bottom: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px 200px at top left,
+    rgba(255,59,59,0.12),
+    transparent 40%
+  );
+  pointer-events: none;
+}
+
+/* ---------- PROJECT HEADER ---------- */
+.project-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.project-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.project-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ---------- PROJECT BODY ---------- */
+.project p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 16px;
+}
+
+.project a {
+  color: #ff3b3b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- BADGES ---------- */
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.badge-grid img {
+  height: 28px;
+}
+
+/* ---------- PROJECT IMAGE ---------- */
+.project img {
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ---------- FOOTER NOTE ---------- */
+.footer-note {
+  margin-top: 50px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Past Work</h1>
+    <p>
+      A selection of projects and systems I’ve built over the last few years.
+      Some began as academic work, others as personal experiments — all of them
+      continue to evolve.
+    </p>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="project">
+    <div class="project-header">
+      <h2>Volcanic Mapping Platform</h2>
+      <div class="project-meta">Web Platform • Live Data • Mapping</div>
+    </div>
+
+    <p>
+      Originally built for a school project, this platform has grown into an
+      actively maintained system. It currently visualizes real-time volcanic
+      activity across the United States using data from the USGS HANS API.
+      The frontend is powered by Leaflet.js for interactive map rendering.
+    </p>
+
+    <p>
+      I am currently expanding the system beyond volcanoes to support a full
+      natural disaster mapping platform capable of tracking multiple event types
+      in real time.
+      You can view the live version at
+      <a href="https://volcano-alerts.pages.dev" target="_blank">
+        volcano-alerts.pages.dev
+      </a>.
+    </p>
+
+    <div class="badge-grid">
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+      <img src="https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white">
+      <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+      <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project">
+    <div class="project-header">
+      <h2>Custom APIs</h2>
+      <div class="project-meta">Backend • Automation • Verification</div>
+    </div>
+
+    <p>
+      A collection of backend services designed to support Discord bots,
+      dashboards, and verification systems. These APIs handle authentication
+      flows, data validation, logging, and automation tasks across multiple
+      projects.
+    </p>
+
+    <div class="badge-grid">
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+      <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
+      <img src="https://img.shields.io/badge/REST_API-000000?style=for-the-badge">
+    </div>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project">
+    <div class="project-header">
+      <h2>Discord Bot Systems</h2>
+      <div class="project-meta">Automation • Moderation • Utilities</div>
+    </div>
+
+    <p>
+      Multiple Discord bots built to solve specific workflow and management
+      problems. These systems focus on performance, clean UX, and modular design,
+      with features such as verification, logging, role automation, and API
+      integrations.
+    </p>
+
+    <div class="badge-grid">
+      <img src="https://img.shields.io/badge/Discord.js-5865F2?style=for-the-badge&logo=discorddotjs&logoColor=white">
+      <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+    </div>
+  </div>
+
+  <div class="footer-note">
+    More projects and details are continuously being added.
+  </div>
+
+</div>
+
+</body>
+</html>
