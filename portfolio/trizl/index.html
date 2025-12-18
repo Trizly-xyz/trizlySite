@@ -415,7 +415,6 @@ html, body {
     <div class="section">
       <div class="section-header">
         Languages & Libraries
-        <span>static</span>
       </div>
       <div class="badge-grid">
         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -431,7 +430,6 @@ html, body {
     <div class="section" onclick="openPastWork()">
       <div class="section-header">
         Past Work
-        <span>open</span>
       </div>
     </div>
 
@@ -439,7 +437,6 @@ html, body {
     <div class="section">
       <div class="section-header">
         We're Hiring!
-        <span>static</span>
       </div>
       <div class="page-info">
         By becoming a staff member at Trizly, we offer you the opportunity to work on exciting projects, enhance your skills, and get a custom portfolio like this one.  
@@ -470,12 +467,7 @@ function isBot() {
 }
 
 function getVisitorId() {
-  let id = localStorage.getItem('visitor_id');
-  if (!id) {
-    id = crypto.randomUUID();
-    localStorage.setItem('visitor_id', id);
-  }
-  return id;
+  return crypto.randomUUID();
 }
 
 function initViewCounter() {

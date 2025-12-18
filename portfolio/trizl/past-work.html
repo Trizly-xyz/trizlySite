@@ -30,14 +30,8 @@ html, body {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- HEADER ---------- */
@@ -68,7 +62,6 @@ html, body {
   padding: 28px 28px 30px;
   margin-bottom: 26px;
   position: relative;
-  overflow: hidden;
 }
 
 .project::before {
@@ -94,7 +87,6 @@ html, body {
 .project-header h2 {
   font-size: 22px;
   font-weight: 700;
-  letter-spacing: -0.3px;
   margin: 0;
 }
 
@@ -117,13 +109,9 @@ html, body {
   font-weight: 600;
 }
 
-.project a:hover {
-  text-decoration: underline;
-}
-
-/* ---------- BADGES ---------- */
+/* ---------- BADGES (FIXED) ---------- */
 .badge-grid {
-  display: flex;
+  display: flex;                /* <-- horizontal */
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
@@ -131,10 +119,13 @@ html, body {
 
 .badge-grid img {
   height: 28px;
+  width: auto;                  /* <-- never stretch */
+  max-width: none;
+  display: block;
 }
 
-/* ---------- PROJECT IMAGE ---------- */
-.project img {
+/* ---------- PROJECT SCREENSHOT IMAGE ---------- */
+.project-image {
   width: 100%;
   margin-top: 18px;
   border-radius: 14px;
@@ -155,13 +146,11 @@ html, body {
 
 <div class="wrapper">
 
-  <!-- HEADER -->
   <div class="header">
     <h1>Past Work</h1>
     <p>
       A selection of projects and systems I’ve built over the last few years.
-      Some began as academic work, others as personal experiments — all of them
-      continue to evolve.
+      Some began as academic work, others as personal experiments.
     </p>
   </div>
 
@@ -174,24 +163,12 @@ html, body {
 
     <p>
       Originally built for a school project, this platform has grown into an
-      actively maintained system. It currently visualizes real-time volcanic
-      activity across the United States using data from the USGS HANS API.
-      The frontend is powered by Leaflet.js for interactive map rendering.
-    </p>
-
-    <p>
-      I am currently expanding the system beyond volcanoes to support a full
-      natural disaster mapping platform capable of tracking multiple event types
-      in real time.
-      You can view the live version at
-      <a href="https://volcano-alerts.pages.dev" target="_blank">
-        volcano-alerts.pages.dev
-      </a>.
+      actively maintained system using USGS data and Leaflet.js.
     </p>
 
     <div class="badge-grid">
-      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
-      <img src="https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white">
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
+      <img src="https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white">
       <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
       <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
     </div>
@@ -205,16 +182,13 @@ html, body {
     </div>
 
     <p>
-      A collection of backend services designed to support Discord bots,
-      dashboards, and verification systems. These APIs handle authentication
-      flows, data validation, logging, and automation tasks across multiple
-      projects.
+      Backend services powering Discord bots, dashboards, and verification flows.
     </p>
 
     <div class="badge-grid">
-      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
       <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
-      <img src="https://img.shields.io/badge/REST_API-000000?style=for-the-badge">
+      <img src="https://img.shields.io/badge/REST%20API-000000?style=for-the-badge&logo=fastapi&logoColor=white">
     </div>
   </div>
 
@@ -226,14 +200,11 @@ html, body {
     </div>
 
     <p>
-      Multiple Discord bots built to solve specific workflow and management
-      problems. These systems focus on performance, clean UX, and modular design,
-      with features such as verification, logging, role automation, and API
-      integrations.
+      Modular Discord bots focused on performance, UX, and automation.
     </p>
 
     <div class="badge-grid">
-      <img src="https://img.shields.io/badge/Discord.js-5865F2?style=for-the-badge&logo=discorddotjs&logoColor=white">
+      <img src="https://img.shields.io/badge/Discord.js-5865F2?style=for-the-badge&logo=discord&logoColor=white">
       <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
     </div>
   </div>
