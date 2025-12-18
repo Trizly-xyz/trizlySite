@@ -477,7 +477,7 @@ html, body {
 
 <script>
 // BOT DETECTION & VIEW COUNTER
-const VIEW_API = process.env.VIEW_API;
+const VIEW_API = '/api/views';  // Calls Cloudflare Pages Function
 
 function isBot() {
   const botPatterns = /bot|crawler|spider|scraper|curl|wget|fetch|headless|phantom|java(?!script)|python|go-http|node|axios/i;
