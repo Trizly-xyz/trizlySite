@@ -146,6 +146,7 @@ html, body {
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 40px 120px rgba(0,0,0,0.85);
   padding: 38px 30px;
+  touch-action: pan-y;
 }
 
 /* ---------- AVATAR ---------- */
@@ -476,7 +477,7 @@ html, body {
 
 <script>
 // BOT DETECTION & VIEW COUNTER
-const VIEW_API = 'https://api.trizly.xyz/portfolio/views/trizl';
+const VIEW_API = process.env.VIEW_API;
 
 function isBot() {
   const botPatterns = /bot|crawler|spider|scraper|curl|wget|fetch|headless|phantom|java(?!script)|python|go-http|node|axios/i;
