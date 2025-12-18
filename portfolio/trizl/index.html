@@ -352,11 +352,15 @@ html, body {
 <!-- AUDIO CONTROL PANEL -->
 <div class="audio-panel">
   <div class="audio-wheel" id="audioWheel" style="--progress: 0%">
-    ♫
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-120q-66 0-113-47T80-280q0-66 47-113t113-47q23 0 42.5 5.5T320-418v-342l480-80v480q0 66-47 113t-113 47q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T720-498v-165l-320 63v320q0 66-47 113t-113 47Z"/></svg>
   </div>
   <div class="audio-controls">
-    <button class="audio-btn" id="pausePlayBtn" title="Pause/Play">▶</button>
-    <button class="audio-btn" id="loopBtn" title="Loop: On" style="color: #ff3b3b;">↻</button>
+    <button class="audio-btn" id="pausePlayBtn" title="Pause/Play">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
+    </button>
+    <button class="audio-btn" id="loopBtn" title="Loop: On">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z"/></svg>
+    </button>
   </div>
   <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="25" title="Volume">
 </div>
@@ -502,8 +506,8 @@ function initAudio() {
   const volumeSlider = document.getElementById('volumeSlider');
   const audioWheel = document.getElementById('audioWheel');
   
-  const PLAY_ICON = '⏸';
-  const PAUSE_ICON = '▶';
+  const PLAY_SVG = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>';
+  const PAUSE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z"/></svg>';
   const DEFAULT_VOLUME = 0.25;
   
   audio.volume = DEFAULT_VOLUME;
@@ -516,7 +520,7 @@ function initAudio() {
   };
   
   const setPlayingState = (isPlaying) => {
-    pausePlayBtn.textContent = isPlaying ? PLAY_ICON : PAUSE_ICON;
+    pausePlayBtn.innerHTML = isPlaying ? PAUSE_SVG : PLAY_SVG;
     audioWheel.classList.toggle('playing', isPlaying);
   };
   
