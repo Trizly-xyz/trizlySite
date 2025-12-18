@@ -467,7 +467,12 @@ function isBot() {
 }
 
 function getVisitorId() {
-  return crypto.randomUUID();
+  let id = sessionStorage.getItem('visitor_id');
+  if (!id) {
+    id = crypto.randomUUID();
+    sessionStorage.setItem('visitor_id', id);
+  }
+  return id;
 }
 
 function initViewCounter() {
