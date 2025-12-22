@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trizly — Privacy Policy</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <meta name="description" content="Privacy Policy for Trizly Operations including Lumi and related services." />
+  <meta property="og:title" content="Trizly Privacy Policy" />
+  <meta property="og:image" content="https://example.com/logo.png"/>
+  <meta name="theme-color" content="#f8f276" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','system-ui'] },
+          colors: {
+            brand:'#f8f276',
+            dark:'#0a0c10',
+            surface:'#111318',
+            card:'#161921'
+          },
+          backgroundImage: {
+            soft:"radial-gradient(circle at top, rgba(248,242,118,.25), transparent 60%)"
+          },
+          boxShadow:{
+            card:"0 0 40px rgba(0,0,0,.25)",
+            border:"0 0 0 1px rgba(255,255,255,.05)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .toc a { color: rgba(255,255,255,.65); }
+    .toc a:hover { color: white; }
+    .prose h2 { font-size:1.3rem; font-weight:700; margin-top:2rem; }
+    .prose p, .prose li { color:rgba(255,255,255,.78); }
+  </style>
+</head>
+
+<body class="bg-dark bg-soft bg-fixed text-white font-sans">
+
+  <header class="border-b border-white/10 backdrop-blur-md bg-black/30 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://cdn.discordapp.com/attachments/1441896319504355508/1448463759197736971/Black-Gradient.png?ex=693b5a7f&is=693a08ff&hm=dd82b41336926ee985ca1a5677b73813996558a34e76eb9c90ae21bc7e4f49fb&" class="w-8 h-8 rounded-md" alt="Trizly"/>
+        <strong class="text-lg">Trizly</strong>
+      </div>
+
+      <nav class="flex items-center gap-4 text-sm">
+        <a class="text-white/70 hover:text-white" href="https://trizly.xyz/legal/terms/">Terms of Service</a>
+        <a class="text-white/70 hover:text-white" href="/">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-14 flex gap-10">
+
+    <aside class="w-48 hidden md:block sticky top-28 toc">
+      <p class="text-xs uppercase tracking-wider text-white/50 mb-2">Sections</p>
+      <div class="space-y-3 text-sm">
+        <a href="#1">1. Overview</a><br/>
+        <a href="#2">2. Data We Collect</a><br/>
+        <a href="#3">3. How Data Is Used</a><br/>
+        <a href="#4">4. Legal Basis</a><br/>
+        <a href="#5">5. Data Sharing</a><br/>
+        <a href="#6">6. Retention</a><br/>
+        <a href="#7">7. Security</a><br/>
+        <a href="#8">8. Your Rights</a><br/>
+        <a href="#9">9. Children</a><br/>
+        <a href="#10">10. Changes</a><br/>
+        <a href="#11">11. Contact</a>
+      </div>
+    </aside>
+
+    <article class="flex-1 bg-card shadow-card shadow-border rounded-2xl p-8 prose max-w-none">
+
+      <h1 class="text-3xl font-extrabold text-brand mb-1">Privacy Policy</h1>
+      <p class="text-white/70 text-sm mb-8">Last updated: <span id="date"></span></p>
+
+      <section id="1">
+        <h2>1. Overview</h2>
+        <p>
+          This Privacy Policy explains how Trizly Operations collects, stores, and processes information
+          for Lumi and all associated services.
+        </p>
+      </section>
+
+      <section id="2">
+        <h2>2. Data We Collect</h2>
+        <ul>
+          <li>Discord IDs (users, roles, channels, guilds)</li>
+          <li>Bot configuration data</li>
+          <li>Moderation logs (warnings, bans, executor, target, timestamps)</li>
+          <li>Error logs, crash reports, and performance metrics</li>
+          <li>Optional API integration details (e.g., ER:LC keys)</li>
+        </ul>
+      </section>
+
+      <section id="3">
+        <h2>3. How Data Is Used</h2>
+        <ul>
+          <li>Operate Lumi’s features and commands</li>
+          <li>Persist server configuration</li>
+          <li>Improve stability, detect abuse, and provide support</li>
+          <li>Troubleshoot errors or misconfigurations</li>
+        </ul>
+      </section>
+
+      <section id="4">
+        <h2>4. Legal Basis</h2>
+        <p>
+          Data is processed based on:
+        </p>
+        <ul>
+          <li>Legitimate interests—service functionality, safety, prevention of abuse</li>
+          <li>User consent—when enabling optional integrations or settings</li>
+        </ul>
+      </section>
+
+      <section id="5">
+        <h2>5. Data Sharing</h2>
+        <p>We do NOT sell your data.</p>
+        <p>We only share data with:</p>
+        <ul>
+          <li>Discord (normal bot operation)</li>
+          <li>Roblox/ER:LC (only if integrations are enabled)</li>
+          <li>Cloud hosting partners</li>
+        </ul>
+      </section>
+
+      <section id="6">
+        <h2>6. Retention</h2>
+        <p>
+          Logs and data are retained for a reasonable duration for support, then automatically removed where applicable.
+        </p>
+      </section>
+
+      <section id="7">
+        <h2>7. Security</h2>
+        <p>
+          We implement modern security practices but cannot guarantee absolute safety of transmitted data.
+        </p>
+      </section>
+
+      <section id="8">
+        <h2>8. Your Rights</h2>
+        <ul>
+          <li>Request removal of your server’s data</li>
+          <li>Opt out by removing the bot</li>
+          <li>Request configuration resets</li>
+        </ul>
+      </section>
+
+      <section id="9">
+        <h2>9. Children</h2>
+        <p>We do not knowingly store data from users younger than Discord’s minimum age requirement.</p>
+      </section>
+
+      <section id="10">
+        <h2>10. Changes</h2>
+        <p>
+          This policy may be updated. Continued use of Trizly services means you accept the new version.
+        </p>
+      </section>
+
+      <section id="11">
+        <h2>11. Contact</h2>
+        <p>
+          Support Discord: <a href="https://discord.gg/kxn6vbZEWU" class="underline">discord.gg/kxn6vbZEWU</a>
+          Support Email: <a href="mailto:support@trizly.xyz" class="underline">support@trizly.xyz</a>
+          Legal Email: <a href="mailto:legal@trizly.xyz" class="underline">legal@trizly.xyz</a>
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <script>
+    const d = new Date();
+    document.getElementById("date").textContent =
+     d.toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+  </script>
+</body>
+</html>

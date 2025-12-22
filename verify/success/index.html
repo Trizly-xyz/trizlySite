@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <title>Verification Complete – Trizly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <style>
-    :root {
-      --accent: #ff4b6e;
-      --accent-soft: rgba(255, 75, 110, 0.16);
-      --bg: radial-gradient(circle at top left, #ff4b6e, #181826 55%, #050814);
-      --card-bg: rgba(9, 11, 24, 0.88);
+     :root {
+      --accent: #f8f276;
+      --accent-soft: rgba(248, 242, 118, 0.12);
+      --bg: radial-gradient(circle at top left, rgba(248, 242, 118, 0.15), #0a0c14 40%, #050812);
+      --card-bg: rgba(10, 12, 20, 0.7);
       --text-main: #f9fafb;
-      --text-muted: #9ca3af;
+      --text-muted: #b0b5c1;
       --radius-lg: 26px;
       --radius-pill: 999px;
       --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
@@ -51,12 +52,12 @@
       opacity: 0.6;
     }
     .bg-orbit::before {
-      background: #ff4b6e;
+      background: #f8f276;
       top: -120px;
       left: -80px;
     }
     .bg-orbit::after {
-      background: #6366f1;
+      background: #fbf59f;
       bottom: -160px;
       right: -40px;
     }
@@ -104,9 +105,21 @@
     .success-box {
       margin-top: 26px;
       padding: 18px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(248, 242, 118, 0.08);
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(248, 242, 118, 0.2);
+    }
+
+    .success-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: rgba(248, 242, 118, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
 
     .success-text {
@@ -133,6 +146,9 @@
     <div class="userid" id="userid"></div>
 
     <div class="success-box">
+      <div class="success-icon">
+        <img src="/favicon.ico" alt="Trizly Icon" style="width: 32px; height: 32px;">
+      </div>
       <div class="success-text">Verification Successful</div>
       <div class="hint">You may now close this page.</div>
     </div>
