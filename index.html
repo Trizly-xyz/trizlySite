@@ -29,21 +29,27 @@
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
       font-family: var(--font-sans);
       color: var(--text-main);
-      background: var(--bg-gradient);
+      background: url('/gradientBackground.png') center/cover no-repeat fixed;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: inherit;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .bg-orbit {
@@ -65,17 +71,8 @@
       opacity: 0.6;
     }
 
-    .bg-orbit::before {
-      background: #f8f276;
-      top: -120px;
-      left: -80px;
-    }
-
-    .bg-orbit::after {
-      background: #fbf59f;
-      bottom: -160px;
-      right: -40px;
-    }
+    .bg-orbit::before { background: #f8f276; top: -120px; left: -80px; }
+    .bg-orbit::after  { background: #fbf59f; bottom: -160px; right: -40px; }
 
     .page-wrap {
       position: relative;
@@ -85,6 +82,7 @@
       margin: 0 auto;
     }
 
+    /* outer card stays */
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
@@ -94,44 +92,28 @@
       padding: 28px 24px 24px;
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 30px;
+      gap: 24px;
       position: relative;
       overflow: hidden;
     }
 
     @media (max-width: 780px) {
-      .card {
-        grid-template-columns: 1fr;
-        padding: 22px 18px 20px;
-      }
+      .card { grid-template-columns: 1fr; padding: 22px 18px 20px; }
     }
 
-    .card-inner {
-      position: relative;
-      z-index: 1;
+    /* LEFT COLUMN STACK (top + bottom) */
+    .left-stack {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 14px;
+      min-width: 0;
     }
 
-    .pill-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border-accent);
-      background: rgba(248, 242, 118, 0.06);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(248, 242, 118, 0.9);
+    .panel {
+      background: rgba(248, 242, 118, 0.04);
+      border: 1px solid rgba(248, 242, 118, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 18px;
     }
 
     .logo-row {
@@ -141,30 +123,31 @@
       margin-bottom: 16px;
     }
 
+    /* FIXED ICON: show the image AND an actual mark (not invisible text) */
     .logo-mark {
       width: 42px;
       height: 42px;
       border-radius: 16px;
-      background: radial-gradient(circle at 30% 0%, #ffffff, #f8f276);
+      background: url('https://cdn.discordapp.com/attachments/1441896319504355508/1451631419096039655/Black-Gradient.png?ex=6946e09c&is=69458f1c&hm=8bcc9d2db36e803af6de603fc020839968124ed8bb76644ca47d042166f5be34&') center/cover no-repeat;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 22px;
-      color: #111;
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .logo-mark::after {
+      content: "⚡";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 8px 18px rgba(0,0,0,0.55);
     }
 
-    .logo-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .logo-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .logo-name { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; }
+    .logo-sub  { font-size: 12px; color: var(--text-muted); }
 
     .hero-title {
       font-size: clamp(28px, 3vw, 34px);
@@ -184,7 +167,7 @@
       font-size: 14px;
       line-height: 1.5;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       max-width: 34rem;
     }
 
@@ -192,7 +175,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .countdown-segment {
@@ -207,11 +190,7 @@
       align-items: center;
     }
 
-    .countdown-segment span.value {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
+    .countdown-segment span.value { font-size: 20px; font-weight: 700; }
     .countdown-segment span.label {
       font-size: 11px;
       text-transform: uppercase;
@@ -223,11 +202,12 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-top: 6px;
     }
 
     .btn-primary,
-    .btn-ghost {
+    .btn-ghost,
+    .btn-soft {
       font-size: 13px;
       border-radius: var(--radius-pill);
       padding: 8px 16px;
@@ -237,7 +217,13 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+      user-select: none;
     }
+
+    .btn-primary:hover,
+    .btn-ghost:hover,
+    .btn-soft:hover { transform: translateY(-1px); }
 
     .btn-primary {
       background: linear-gradient(135deg, #f8f276 0%, #fbf59f 100%);
@@ -252,14 +238,22 @@
       color: #f8f276;
     }
 
-    .side-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-accent);
+    .btn-soft {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+      color: #e5e7eb;
+    }
+
+    /* RIGHT COLUMN: one tall panel like screenshot */
+    .right-panel {
       background: rgba(248, 242, 118, 0.04);
-      padding: 16px;
+      border: 1px solid rgba(248, 242, 118, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      min-width: 0;
     }
 
     .side-title {
@@ -287,74 +281,158 @@
       gap: 8px;
       color: var(--text-muted);
       font-size: 12px;
+      position: relative;
+      padding-left: 16px; /* space for bullet */
+    }
+    .side-item::before {
+      content: "\2022"; /* bullet • */
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1;
     }
 
     .side-bullet {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      border: 1px solid var(--border-accent);
+      display: none; /* hide circled labels like ①, BETA */
+    }
+
+    /* CORE TEAM LIST (bottom-left) */
+    .core-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .core-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      background: rgba(248, 242, 118, 0.08);
-      margin-top: 2px;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(248,242,118,0.14);
+      background: rgba(248,242,118,0.03);
+    }
+    .core-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .core-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .core-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="bg-orbit"></div>
 
   <div class="page-wrap">
     <main class="card">
 
-      <!-- LEFT SIDE -->
-      <section class="card-inner">
-        <div class="pill-tag">
-          <span class="pill-dot"></span>
-          <span>Trizly · Launch Sequence Armed</span>
-        </div>
+      <!-- LEFT COLUMN (TOP + BOTTOM) -->
+      <div class="left-stack">
 
-        <div class="logo-row">
-          <div class="logo-mark">T</div>
-          <div class="logo-text">
-            <div class="logo-name">TRIZLY</div>
-            <div class="logo-sub">Bots · Infrastructure · Automation</div>
+        <!-- TOP LEFT: HERO -->
+        <section class="panel">
+          <div class="logo-row">
+            <div class="logo-mark"></div>
+            <div class="logo-text">
+              <div class="logo-name">TRIZLY</div>
+              <div class="logo-sub">Bots · Infrastructure · Automation</div>
+            </div>
           </div>
-        </div>
 
-        <h1 class="hero-title">
-          A new stack of <span>discord automation</span> is coming.
-        </h1>
+          <h1 class="hero-title">
+            A new stack of <span>discord automation</span> is coming.
+          </h1>
 
-        <p class="hero-text">
-          Trizly is building modern, production-grade Discord bots, automation pipelines, and backend tools for communities that want more than cookie-cutter systems.
-        </p>
+          <p class="hero-text">
+            Trizly is building modern, production-grade Discord bots, automation pipelines, and backend tools for communities that want more than cookie-cutter systems.
+          </p>
 
-        <!-- COUNTDOWN -->
-        <div id="countdown" class="countdown" data-live="true">
-          <div class="countdown-segment"><span class="value" id="days">00</span><span class="label">Days</span></div>
-          <div class="countdown-segment"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
-          <div class="countdown-segment"><span class="value" id="minutes">00</span><span class="label">Minutes</span></div>
-          <div class="countdown-segment"><span class="value" id="seconds">00</span><span class="label">Seconds</span></div>
-        </div>
+          <!-- COUNTDOWN -->
+          <div id="countdown" class="countdown" data-live="true">
+            <div class="countdown-segment"><span class="value" id="days">00</span><span class="label">Days</span></div>
+            <div class="countdown-segment"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
+            <div class="countdown-segment"><span class="value" id="minutes">00</span><span class="label">Minutes</span></div>
+            <div class="countdown-segment"><span class="value" id="seconds">00</span><span class="label">Seconds</span></div>
+          </div>
 
-        <p class="hero-text">
-          Countdown to early access. New systems, new APIs, and a new era of Discord infrastructure.
-        </p>
+          <p class="hero-text">
+            Countdown to early access. New systems, new APIs, and a new era of Discord infrastructure.
+          </p>
 
-        <div class="actions">
-          <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">💬 Join the Early Discord</a>
-          <a href="mailto:trizl@trizly.xyz" class="btn-ghost">✉️ Contact the Team</a>
-        </div>
+          <!-- BUTTONS YOU WANTED -->
+          <div class="actions">
+            <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">Join Community Server</a>
+            <a href="mailto:support@trizly.xyz" class="btn-ghost">Support Email</a>
+          </div>
+        </section>
 
-      </section>
+        <!-- BOTTOM LEFT: CORE TEAM (like screenshot lower-left panel) -->
+        <section class="panel" id="core-team">
+          <span class="side-title">Core Team</span>
 
-      <!-- RIGHT SIDE -->
-      <aside class="card-inner side-card">
+          <p class="side-main-text" style="margin-top:8px;">
+            The Trizly core team handles leadership, architecture, operations, finance, and delivery — keeping the ecosystem stable, scalable, and moving fast.
+          </p>
 
+          <div class="core-grid">
+            <div class="core-row">
+              <div class="core-meta">
+                <div class="core-name">Trizl</div>
+                <div class="core-role">CEO | trizl@trizly.xyz</div>
+              </div>
+              <a class="btn-ghost" href="mailto:trizl@trizly.xyz">Email Me</a>
+            </div>
+
+            <div class="core-row">
+              <div class="core-meta">
+                <div class="core-name">Bloxy</div>
+                <div class="core-role">COO | bloxy@trizly.xyz</div>
+              </div>
+              <a class="btn-ghost" href="mailto:bloxy@trizly.xyz">Email Me</a>
+            </div>
+
+            <div class="core-row">
+              <div class="core-meta">
+                <div class="core-name">Ghost</div>
+                <div class="core-role">CTO | ghost@trizly.xyz</div>
+              </div>
+              <a class="btn-ghost" href="mailto:ghost@trizly.xyz">Email Me</a>
+            </div>
+
+            <div class="core-row">
+              <div class="core-meta">
+                <div class="core-name">Phase</div>
+                <div class="core-role">CFO | phase@trizly.xyz</div>
+              </div>
+              <a class="btn-ghost" href="mailto:phase@trizly.xyz">Email Me</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN (TALL PANEL) -->
+      <aside class="right-panel" id="hiring">
+
+        <!-- KEEP THIS SECTION (unchanged from your original, only moved into the new layout) -->
         <div class="side-header">
           <span class="side-title">What is Trizly?</span>
         </div>
@@ -364,59 +442,37 @@
         </p>
 
         <ul class="side-list">
-          <li class="side-item"><span class="side-bullet">①</span><span><strong>Modern automation:</strong> sessions, moderation, tickets, blacklists, logging, affiliations, giveaways, and more.</span></li>
-          <li class="side-item"><span class="side-bullet">②</span><span><strong>Roblox verification ecosystem:</strong> full API, Discord integration, identity pipeline, and developer tools.</span></li>
-          <li class="side-item"><span class="side-bullet">③</span><span><strong>Unified backend:</strong> bots, APIs, dashboards, and services all connected through a single central system.</span></li>
+          <li class="side-item"><span><strong>Modern automation:</strong> sessions, moderation, tickets, blacklists, logging, affiliations, giveaways, and more.</span></li>
+          <li class="side-item"><span><strong>Roblox verification ecosystem:</strong> full API, Discord integration, identity pipeline, and developer tools.</span></li>
+          <li class="side-item"><span><strong>Unified backend:</strong> bots, APIs, dashboards, and services all connected through a single central system.</span></li>
         </ul>
 
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 8px 0;" />
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;" />
 
+        <!-- UPDATED HIRING (you explicitly requested changes here) -->
         <div class="side-header">
           <span class="side-title">We’re Hiring</span>
         </div>
 
         <p class="side-main-text">
-          Trizly is recruiting leadership and developers to help build our ecosystem. These roles help develop systems used across dozens of ERLC communities.
+          Trizly is recruiting developers and team members to help build our ecosystem. Current openings are focused on implementation, support, and testing across our systems.
         </p>
 
         <ul class="side-list">
-
-          <li class="side-item">
-            <span class="side-bullet">COO</span>
-            <span>
-              Oversees operations, workflows, partnerships, and project direction.<br>
-              <strong>Requirements:</strong> basic coding skill, leadership ability, planning ability.<br>
-              <strong>Benefits:</strong> custom email, 10–15% payroll listing, portfolio page.
-            </span>
-          </li>
-
-          <li class="side-item">
-            <span class="side-bullet">CTO</span>
-            <span>
-              Leads architecture, API planning, system structure, and technical decisions.<br>
-              <strong>Requirements:</strong> advanced coding, backend/APIs, Discord.js knowledge.<br>
-              <strong>Benefits:</strong> custom email, 10–15% payroll listing, portfolio page.
-            </span>
-          </li>
-
-          <li class="side-item">
-            <span class="side-bullet">DEV</span>
-            <span>
-              Builds automation systems, bots, dashboards, and backend features.<br>
-              <strong>Requirements:</strong> fluent coding skill in Node.js/Discord.js.<br>
-              <strong>Benefits:</strong> portfolio page, early API access, dev-exclusive tools.
-            </span>
-          </li>
-
+          <li class="side-item"><span><strong>HTML / JS / TS Developers:</strong> build front-end pages, panels, dashboards, and internal tools.</span></li>
+          <li class="side-item"><span><strong>Management:</strong> organize tasks, coordinate releases, handle partnerships and staffing.</span></li>
+          <li class="side-item"><span><strong>Support Agents:</strong> handle tickets, user help, and internal QA reports.</span></li>
+          <li class="side-item"><span><strong>Beta Testers:</strong> test new features, report bugs, and validate release builds.</span></li>
         </ul>
 
         <p class="side-main-text">
           Ready to build the next generation of ERLC development? Join the team and help build systems that actually make a difference.
         </p>
 
-        <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary" style="margin-top: 8px; display: inline-flex;">
-          🚀 Apply Now
-        </a>
+        <!-- MORE BUTTONS (sane placement) -->
+        <div class="actions" style="margin-top: 6px;">
+          <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">Apply in Discord</a>
+        </div>
 
       </aside>
 
@@ -424,6 +480,14 @@
   </div>
 
   <script>
+    // Disable right-click and image dragging on background
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target === document.body) e.preventDefault();
+    });
+    document.addEventListener('dragstart', (e) => {
+      if (e.target === document.body) e.preventDefault();
+    });
+
     const launchDate = new Date("2025-12-31T23:59:59-07:00");
 
     const daysEl = document.getElementById("days");
