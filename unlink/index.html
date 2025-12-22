@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unlink Account – Trizly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, rgba(248, 242, 118, 0.15), #0a0c14 40%, #050812);
+      --accent: #f8f276;
+      --accent-secondary: #fbf59f;
+      --accent-soft: rgba(248, 242, 118, 0.12);
+      --card-bg: rgba(10, 12, 20, 0.7);
+      --text-main: #f9fafb;
+      --text-muted: #b0b5c1;
+      --border-subtle: rgba(248, 242, 118, 0.08);
+      --border-accent: rgba(248, 242, 118, 0.15);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --blur: 20px;
+      --transition-fast: 160ms ease-out;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background: url('/gradientBackground.png') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: inherit;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-orbit {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-orbit::before,
+    .bg-orbit::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.6;
+    }
+
+    .bg-orbit::before { background: #f8f276; top: -120px; left: -80px; }
+    .bg-orbit::after  { background: #fbf59f; bottom: -160px; right: -40px; }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 0 40px rgba(248, 242, 118, 0.05), var(--shadow-soft);
+      backdrop-filter: blur(var(--blur));
+      width: 100%;
+      max-width: 520px;
+      padding: 36px 26px;
+      text-align: center;
+    }
+
+    .logo-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      background: url('https://cdn.discordapp.com/attachments/1441896319504355508/1451631419096039655/Black-Gradient.png?ex=6946e09c&is=69458f1c&hm=8bcc9d2db36e803af6de603fc020839968124ed8bb76644ca47d042166f5be34&') center/cover no-repeat;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background-image: url('/Yellow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(120deg, #f8f276, #fbf59f, #fef08a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .warning-box {
+      margin: 20px 0;
+      padding: 16px;
+      background: rgba(248, 118, 118, 0.08);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(248, 118, 118, 0.2);
+    }
+
+    .warning-box p {
+      color: #fca5a5;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .info-box {
+      margin: 20px 0;
+      padding: 16px;
+      background: rgba(248, 242, 118, 0.08);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(248, 242, 118, 0.2);
+    }
+
+    .info-box p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin: 6px 0;
+      text-align: left;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn-danger,
+    .btn-ghost {
+      font-size: 13px;
+      border-radius: var(--radius-pill);
+      padding: 10px 20px;
+      border: 1px solid;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+      user-select: none;
+      font-weight: 600;
+    }
+
+    .btn-danger:hover,
+    .btn-ghost:hover { transform: translateY(-1px); }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+      border-color: rgba(248, 113, 113, 0.3);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: rgba(248, 242, 118, 0.08);
+      border-color: rgba(248, 242, 118, 0.2);
+      color: #f8f276;
+    }
+
+    .btn-danger:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orbit"></div>
+
+  <div class="card">
+    <div class="logo-mark"></div>
+    
+    <h1>Unlink Your Account</h1>
+    
+    <p>
+      Remove your Roblox verification from all Trizly servers. This action will disconnect your Discord account from your Roblox account.
+    </p>
+
+    <div class="warning-box">
+      <p><strong>⚠️ Warning:</strong> This will remove your verification and verified roles from all servers using Lumi.</p>
+    </div>
+
+    <div class="info-box">
+      <p><strong>What happens when you unlink:</strong></p>
+      <p>• Your Roblox account will be disconnected from your Discord</p>
+      <p>• All verified roles will be removed</p>
+      <p>• You can re-verify at any time</p>
+      <p>• This action is immediate and cannot be undone</p>
+    </div>
+
+    <div class="actions">
+      <button id="unlinkBtn" class="btn-danger">Unlink My Account</button>
+      <a href="/" class="btn-ghost">Cancel</a>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 12px;">
+      You will be asked to sign in with Discord to confirm your identity before unlinking.
+    </p>
+  </div>
+
+  <script>
+    document.getElementById('unlinkBtn').addEventListener('click', () => {
+      // Disable button to prevent double-clicks
+      const btn = document.getElementById('unlinkBtn');
+      btn.disabled = true;
+      btn.textContent = 'Redirecting...';
+      
+      // Redirect to worker unlink start endpoint
+      window.location.href = 'https://api.trizly.xyz/unlink/start';
+    });
+  </script>
+
+</body>
+</html>
