@@ -1,22 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Verifying…</title>
+  <title>Verifying… – Trizly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
   <style>
-    body { 
-      background: #05060f; 
-      color: white; 
-      font-family: sans-serif; 
-      text-align: center; 
-      padding: 60px;
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, rgba(248, 242, 118, 0.15), #0a0c14 40%, #050812);
+      --accent: #f8f276;
+      --accent-secondary: #fbf59f;
+      --accent-soft: rgba(248, 242, 118, 0.12);
+      --card-bg: rgba(10, 12, 20, 0.7);
+      --text-main: #f9fafb;
+      --text-muted: #b0b5c1;
+      --border-subtle: rgba(248, 242, 118, 0.08);
+      --border-accent: rgba(248, 242, 118, 0.15);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --blur: 20px;
+      --transition-fast: 160ms ease-out;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background: url('/gradientBackground.png') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: inherit;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-orbit {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-orbit::before,
+    .bg-orbit::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.6;
+    }
+
+    .bg-orbit::before { background: #f8f276; top: -120px; left: -80px; }
+    .bg-orbit::after  { background: #fbf59f; bottom: -160px; right: -40px; }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 0 40px rgba(248, 242, 118, 0.05), var(--shadow-soft);
+      backdrop-filter: blur(var(--blur));
+      width: 100%;
+      max-width: 460px;
+      padding: 36px 26px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+      border: 3px solid rgba(248, 242, 118, 0.2);
+      border-top-color: #f8f276;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(120deg, #f8f276, #fbf59f, #fef08a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
 
-  <h2>Verifying your Discord identity…</h2>
-  <p>Please wait a moment.</p>
+  <div class="bg-orbit"></div>
+
+  <div class="card">
+    <div class="spinner"></div>
+    <h2>Verifying your Discord identity…</h2>
+    <p>Please wait a moment.</p>
+  </div>
 
   <script>
     // Get OAuth code from URL

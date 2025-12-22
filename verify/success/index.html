@@ -7,40 +7,56 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <style>
-     :root {
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, rgba(248, 242, 118, 0.15), #0a0c14 40%, #050812);
       --accent: #f8f276;
+      --accent-secondary: #fbf59f;
       --accent-soft: rgba(248, 242, 118, 0.12);
-      --bg: radial-gradient(circle at top left, rgba(248, 242, 118, 0.15), #0a0c14 40%, #050812);
       --card-bg: rgba(10, 12, 20, 0.7);
       --text-main: #f9fafb;
       --text-muted: #b0b5c1;
-      --radius-lg: 26px;
-      --radius-pill: 999px;
+      --border-subtle: rgba(248, 242, 118, 0.08);
+      --border-accent: rgba(248, 242, 118, 0.15);
       --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", Segoe UI, sans-serif;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --blur: 20px;
+      --transition-fast: 160ms ease-out;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
-      background: var(--bg);
-      color: var(--text-main);
       font-family: var(--font-sans);
+      color: var(--text-main);
+      background: url('/gradientBackground.png') center/cover no-repeat fixed;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 24px;
       position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: inherit;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .bg-orbit {
       position: fixed;
       inset: 0;
-      z-index: 0;
       overflow: hidden;
       pointer-events: none;
+      z-index: 0;
     }
+
     .bg-orbit::before,
     .bg-orbit::after {
       content: "";
@@ -51,25 +67,18 @@
       filter: blur(70px);
       opacity: 0.6;
     }
-    .bg-orbit::before {
-      background: #f8f276;
-      top: -120px;
-      left: -80px;
-    }
-    .bg-orbit::after {
-      background: #fbf59f;
-      bottom: -160px;
-      right: -40px;
-    }
+
+    .bg-orbit::before { background: #f8f276; top: -120px; left: -80px; }
+    .bg-orbit::after  { background: #fbf59f; bottom: -160px; right: -40px; }
 
     .card {
       position: relative;
       z-index: 2;
       background: var(--card-bg);
-      backdrop-filter: blur(20px);
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 0 40px rgba(248, 242, 118, 0.05), var(--shadow-soft);
+      backdrop-filter: blur(var(--blur));
       width: 100%;
       max-width: 460px;
       padding: 36px 26px;
@@ -82,7 +91,7 @@
       border-radius: 26px;
       box-shadow: 0 14px 34px rgba(0,0,0,0.6);
       margin-bottom: 16px;
-      border: 2px solid rgba(255,255,255,0.1);
+      border: 2px solid rgba(248, 242, 118, 0.15);
     }
 
     .name {
@@ -126,6 +135,10 @@
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 6px;
+      background: linear-gradient(120deg, #f8f276, #fbf59f, #fef08a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hint {
