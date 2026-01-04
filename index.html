@@ -4,8 +4,23 @@
   <meta charset="UTF-8" />
   <title>Trizly Systems</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Trizly is building tools and bots for the next generation of communities." />
+  <meta
+    name="description"
+    content="Trizly Systems builds tools and bots for the next generation of communities."/>
+  <meta name="theme-color" content="#f8f276" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta property="og:site_name" content="Trizly Systems" />
+  <meta property="og:title" content="Trizly Systems" />
+  <meta
+    property="og:description"
+    content="Tools and bots for the next generation of communities."/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trizly.xyz/" />
+  <meta
+    property="og:image"
+    content="https://cdn.discordapp.com/attachments/1441896319504355508/1451631419096039655/Black-Gradient.png"/>
+  <meta property="og:image:width" content="1200" />
+</head>
 
   <style>
     :root {
@@ -13,24 +28,33 @@
       --accent: #f8f276;
       --accent-secondary: #fbf59f;
       --accent-soft: rgba(248, 242, 118, 0.12);
-      --card-bg: rgba(10, 12, 20, 0.7);
-      --card-bg-alt: rgba(15, 18, 30, 0.5);
+      --card-bg: rgba(10, 12, 20, 0.85);
+      --card-bg-alt: rgba(15, 18, 30, 0.65);
       --text-main: #f9fafb;
       --text-muted: #b0b5c1;
       --border-subtle: rgba(248, 242, 118, 0.08);
-      --border-accent: rgba(248, 242, 118, 0.15);
-      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
-      --radius-lg: 26px;
-      --radius-md: 18px;
+      --border-accent: rgba(248, 242, 118, 0.2);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.65);
+      --shadow-glow: 0 0 30px rgba(248, 242, 118, 0.15);
+      --radius-lg: 24px;
+      --radius-md: 16px;
       --radius-pill: 999px;
       
-      --blur: 20px;
-      --transition-fast: 160ms ease-out;
-      --transition-med: 220ms ease-out;
+      --blur: 24px;
+      --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: 300ms cubic-bezier(0.4, 0, 0.2, 1);
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       min-height: 100vh;
@@ -42,6 +66,8 @@
       justify-content: center;
       padding: 24px;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body::before {
@@ -65,15 +91,31 @@
     .bg-orbit::after {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
+      width: 500px;
+      height: 500px;
       border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.6;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: pulse 8s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
     }
 
-    .bg-orbit::before { background: #f8f276; top: -120px; left: -80px; }
-    .bg-orbit::after  { background: #fbf59f; bottom: -160px; right: -40px; }
+    .bg-orbit::before { 
+      background: radial-gradient(circle, #f8f276 0%, transparent 70%);
+      top: -140px; 
+      left: -100px;
+    }
+    
+    .bg-orbit::after  { 
+      background: radial-gradient(circle, #fbf59f 0%, transparent 70%);
+      bottom: -180px; 
+      right: -60px; 
+      animation-delay: 4s;
+    }
 
     .page-wrap {
       position: relative;
@@ -83,23 +125,31 @@
       margin: 0 auto;
     }
 
-    /* outer card stays */
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-accent);
-      box-shadow: 0 0 40px rgba(248, 242, 118, 0.05), var(--shadow-soft);
-      backdrop-filter: blur(var(--blur));
-      padding: 28px 24px 24px;
+      box-shadow: 
+        0 0 0 1px rgba(248, 242, 118, 0.1),
+        0 20px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(248, 242, 118, 0.08);
+      backdrop-filter: blur(var(--blur)) saturate(180%);
+      -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+      padding: 32px 28px;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 28px;
       position: relative;
       overflow: hidden;
+      transition: all var(--transition-med);
     }
 
     @media (max-width: 780px) {
-      .card { grid-template-columns: 1fr; padding: 22px 18px 20px; }
+      .card { 
+        grid-template-columns: 1fr; 
+        padding: 24px 20px; 
+        gap: 20px;
+      }
     }
 
     /* LEFT COLUMN STACK (top + bottom) */
@@ -111,30 +161,44 @@
     }
 
     .panel {
-      background: rgba(248, 242, 118, 0.04);
-      border: 1px solid rgba(248, 242, 118, 0.12);
+      background: rgba(248, 242, 118, 0.05);
+      border: 1px solid rgba(248, 242, 118, 0.15);
       border-radius: var(--radius-lg);
-      padding: 18px;
+      padding: 24px;
+      transition: all var(--transition-fast);
+    }
+    
+    .panel:hover {
+      background: rgba(248, 242, 118, 0.07);
+      border-color: rgba(248, 242, 118, 0.22);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     .logo-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
-    /* FIXED ICON: show the image AND an actual mark (not invisible text) */
     .logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       background: url('https://cdn.discordapp.com/attachments/1441896319504355508/1451631419096039655/Black-Gradient.png?ex=6946e09c&is=69458f1c&hm=8bcc9d2db36e803af6de603fc020839968124ed8bb76644ca47d042166f5be34&') center/cover no-repeat;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
+      box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(248, 242, 118, 0.15);
       position: relative;
       overflow: hidden;
       flex: 0 0 auto;
+      transition: transform var(--transition-fast);
     }
+    
+    .logo-mark:hover {
+      transform: scale(1.05);
+    }
+    
     .logo-mark::after {
       content: "";
       position: absolute;
@@ -147,114 +211,196 @@
       background-position: center;
     }
 
-    .logo-name { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; }
-    .logo-sub  { font-size: 12px; color: var(--text-muted); }
-
-    .hero-title {
-      font-size: clamp(28px, 3vw, 34px);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, #f8f276, #fbf59f, #fef08a);
+    .logo-name { 
+      font-size: 24px; 
+      font-weight: 700; 
+      letter-spacing: 0.1em; 
+      background: linear-gradient(135deg, #f8f276, #fef08a);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+    
+    .logo-sub  { 
+      font-size: 12px; 
+      color: var(--text-muted); 
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 3.2vw, 36px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #f8f276 0%, #fbf59f 50%, #fef08a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      animation: gradientShift 8s ease infinite;
+      background-size: 200% 200%;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
     .hero-text {
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 14.5px;
+      line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 18px;
-      max-width: 34rem;
+      margin-bottom: 20px;
+      max-width: 36rem;
     }
 
     .countdown {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
     .countdown-segment {
-      flex: 1 1 90px;
-      min-width: 90px;
-      background: rgba(248, 242, 118, 0.04);
+      flex: 1 1 95px;
+      min-width: 95px;
+      background: rgba(248, 242, 118, 0.06);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-accent);
-      padding: 10px;
+      padding: 14px 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 4px;
+      transition: all var(--transition-fast);
+    }
+    
+    .countdown-segment:hover {
+      background: rgba(248, 242, 118, 0.1);
+      border-color: rgba(248, 242, 118, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .countdown-segment span.value { font-size: 20px; font-weight: 700; }
+    .countdown-segment span.value { 
+      font-size: 26px; 
+      font-weight: 800; 
+      background: linear-gradient(135deg, #f8f276, #fef08a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    
     .countdown-segment span.label {
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.15em;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
     .actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     .btn-primary,
     .btn-ghost,
     .btn-soft {
-      font-size: 13px;
+      font-size: 13.5px;
       border-radius: var(--radius-pill);
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 1px solid;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+      transition: all var(--transition-fast);
       user-select: none;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary:hover,
     .btn-ghost:hover,
-    .btn-soft:hover { transform: translateY(-1px); }
+    .btn-soft:hover { 
+      transform: translateY(-2px);
+    }
+    
+    .btn-primary:active,
+    .btn-ghost:active,
+    .btn-soft:active {
+      transform: translateY(0);
+    }
 
     .btn-primary {
       background: linear-gradient(135deg, #f8f276 0%, #fbf59f 100%);
-      border-color: rgba(248, 242, 118, 0.3);
+      border-color: rgba(248, 242, 118, 0.4);
       color: #0a0c14;
-      font-weight: 600;
+      font-weight: 700;
+      box-shadow: 
+        0 4px 12px rgba(248, 242, 118, 0.3),
+        0 0 0 1px rgba(248, 242, 118, 0.2);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #fbf59f 0%, #fef08a 100%);
+      box-shadow: 
+        0 8px 24px rgba(248, 242, 118, 0.4),
+        0 0 0 1px rgba(248, 242, 118, 0.3);
     }
 
     .btn-ghost {
       background: rgba(248, 242, 118, 0.08);
-      border-color: rgba(248, 242, 118, 0.2);
+      border-color: rgba(248, 242, 118, 0.25);
       color: #f8f276;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-ghost:hover {
+      background: rgba(248, 242, 118, 0.15);
+      border-color: rgba(248, 242, 118, 0.35);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
 
     .btn-soft {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.15);
       color: #e5e7eb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-soft:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
 
-    /* RIGHT COLUMN: one tall panel like screenshot */
     .right-panel {
-      background: rgba(248, 242, 118, 0.04);
-      border: 1px solid rgba(248, 242, 118, 0.12);
+      background: rgba(248, 242, 118, 0.05);
+      border: 1px solid rgba(248, 242, 118, 0.15);
       border-radius: var(--radius-lg);
-      padding: 18px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
       min-width: 0;
+      transition: all var(--transition-fast);
+    }
+    
+    .right-panel:hover {
+      background: rgba(248, 242, 118, 0.07);
+      border-color: rgba(248, 242, 118, 0.22);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     .side-title {
@@ -262,75 +408,98 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: #f8f276;
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
     .side-main-text {
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 13.5px;
+      line-height: 1.55;
       color: #e5e7eb;
     }
 
     .side-list {
       list-style: none;
       display: grid;
-      gap: 8px;
+      gap: 12px;
     }
 
     .side-item {
       display: flex;
       gap: 8px;
       color: var(--text-muted);
-      font-size: 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
       position: relative;
-      padding-left: 16px; /* space for bullet */
+      padding-left: 20px;
+      transition: all var(--transition-fast);
     }
+    
+    .side-item:hover {
+      color: #e5e7eb;
+      padding-left: 24px;
+    }
+    
     .side-item::before {
-      content: "\2022"; /* bullet • */
+      content: "•";
       position: absolute;
       left: 0;
       top: 0.2em;
       color: var(--accent);
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1;
+      font-weight: 700;
     }
 
     .side-bullet {
-      display: none; /* hide circled labels like ①, BETA */
+      display: none;
     }
 
-    /* CORE TEAM LIST (bottom-left) */
     .core-grid {
       display: grid;
-      gap: 10px;
-      margin-top: 8px;
+      gap: 12px;
+      margin-top: 12px;
     }
+    
     .core-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
+      gap: 14px;
+      padding: 14px 16px;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(248,242,118,0.14);
-      background: rgba(248,242,118,0.03);
+      border: 1px solid rgba(248,242,118,0.18);
+      background: rgba(248,242,118,0.05);
+      transition: all var(--transition-fast);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
+    
+    .core-row:hover {
+      background: rgba(248,242,118,0.08);
+      border-color: rgba(248,242,118,0.28);
+      transform: translateX(4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+    
     .core-meta {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
       min-width: 0;
     }
+    
     .core-name {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      letter-spacing: 0.01em;
     }
+    
     .core-role {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
       white-space: nowrap;
       overflow: hidden;
@@ -345,10 +514,8 @@
   <div class="page-wrap">
     <main class="card">
 
-      <!-- LEFT COLUMN (TOP + BOTTOM) -->
       <div class="left-stack">
 
-        <!-- TOP LEFT: HERO -->
         <section class="panel">
           <div class="logo-row">
             <div class="logo-mark"></div>
@@ -366,7 +533,6 @@
             Trizly is building modern, production-grade Discord bots, automation pipelines, and backend tools for communities that want more than cookie-cutter systems.
           </p>
 
-          <!-- COUNTDOWN -->
           <div id="countdown" class="countdown" data-live="true">
             <div class="countdown-segment"><span class="value" id="days">00</span><span class="label">Days</span></div>
             <div class="countdown-segment"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
@@ -378,14 +544,12 @@
             Countdown to early access. New systems, new APIs, and a new era of Discord infrastructure.
           </p>
 
-          <!-- BUTTONS YOU WANTED -->
           <div class="actions">
             <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">Join Community Server</a>
             <a href="mailto:support@trizly.xyz" class="btn-ghost">Support Email</a>
           </div>
         </section>
 
-        <!-- BOTTOM LEFT: CORE TEAM (like screenshot lower-left panel) -->
         <section class="panel" id="core-team">
           <span class="side-title">Core Team</span>
 
@@ -399,7 +563,10 @@
                 <div class="core-name">Trizl</div>
                 <div class="core-role">CEO | trizl@trizly.xyz</div>
               </div>
-              <a class="btn-ghost" href="mailto:trizl@trizly.xyz">Email Me</a>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn-ghost" href="https://discord.com/users/711973114917027940">Contact Me</a>
+                <a class="btn-ghost" href="mailto:trizl@trizly.xyz">Email</a>
+              </div>
             </div>
 
             <div class="core-row">
@@ -407,7 +574,7 @@
                 <div class="core-name">Bloxy</div>
                 <div class="core-role">COO | bloxy@trizly.xyz</div>
               </div>
-              <a class="btn-ghost" href="mailto:bloxy@trizly.xyz">Email Me</a>
+              <a class="btn-ghost" href="https://discord.com/users/762104476785311796">Contact Me</a>
             </div>
 
             <div class="core-row">
@@ -415,7 +582,7 @@
                 <div class="core-name">Ghost</div>
                 <div class="core-role">CTO | ghost@trizly.xyz</div>
               </div>
-              <a class="btn-ghost" href="mailto:ghost@trizly.xyz">Email Me</a>
+              <a class="btn-ghost" href="https://discord.com/users/1290068509509943306">Contact Me</a>
             </div>
 
             <div class="core-row">
@@ -423,17 +590,18 @@
                 <div class="core-name">Phase</div>
                 <div class="core-role">CFO | phase@trizly.xyz</div>
               </div>
-              <a class="btn-ghost" href="mailto:phase@trizly.xyz">Email Me</a>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn-ghost" href="https://discord.com/users/926582079741890560">Contact Me</a>
+                <a class="btn-ghost" href="mailto:phase@trizly.xyz">Email</a>
+              </div>
             </div>
           </div>
         </section>
 
       </div>
 
-      <!-- RIGHT COLUMN (TALL PANEL) -->
       <aside class="right-panel" id="hiring">
 
-        <!-- KEEP THIS SECTION (unchanged from your original, only moved into the new layout) -->
         <div class="side-header">
           <span class="side-title">What is Trizly?</span>
         </div>
@@ -450,7 +618,6 @@
 
         <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;" />
 
-        <!-- UPDATED HIRING (you explicitly requested changes here) -->
         <div class="side-header">
           <span class="side-title">We’re Hiring</span>
         </div>
@@ -470,7 +637,6 @@
           Ready to build the next generation of ERLC development? Join the team and help build systems that actually make a difference.
         </p>
 
-        <!-- MORE BUTTONS (sane placement) -->
         <div class="actions" style="margin-top: 6px;">
           <a href="https://discord.gg/dhDKQRXbFy" class="btn-primary">Apply in Discord</a>
         </div>
