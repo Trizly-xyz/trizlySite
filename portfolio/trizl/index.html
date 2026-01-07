@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- RESET ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +22,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ---------- VIDEO BACKGROUND ---------- */
 .bg-video {
   position: fixed;
   inset: 0;
@@ -40,7 +38,6 @@ html, body {
   z-index: -1;
 }
 
-/* ---------- HEADER PANELS ---------- */
 .view-counter,
 .audio-panel {
   position: fixed;
@@ -134,7 +131,6 @@ html, body {
   accent-color: #ff3b3b;
 }
 
-/* ---------- LAYOUT ---------- */
 .container {
   max-width: 580px;
   margin: 60px auto;
@@ -150,7 +146,6 @@ html, body {
   touch-action: pan-y;
 }
 
-/* ---------- AVATAR ---------- */
 .avatar-wrap {
   display: flex;
   flex-direction: column;
@@ -184,7 +179,6 @@ html, body {
   color: rgba(255,255,255,0.55);
 }
 
-/* ---------- SOCIALS ---------- */
 .socials {
   display: flex;
   gap: 12px;
@@ -208,7 +202,6 @@ html, body {
   box-shadow: 0 12px 28px rgba(255,59,59,0.35);
 }
 
-/* ---------- BIO ---------- */
 .bio {
   margin-top: 28px;
   font-size: 14px;
@@ -221,14 +214,12 @@ html, body {
   color: #ff3b3b;
 }
 
-/* ---------- DIVIDER ---------- */
 .divider {
   height: 1px;
   background: rgba(255,255,255,0.08);
   margin: 36px 0;
 }
 
-/* ---------- SECTIONS ---------- */
 .section {
   background: #141414;
   border-radius: 16px;
@@ -251,7 +242,6 @@ html, body {
   color: #ff3b3b;
 }
 
-/* ---------- BADGES ---------- */
 .badge-grid {
   padding: 22px;
   display: flex;
@@ -264,7 +254,6 @@ html, body {
   height: 28px;
 }
 
-/* ---------- PAGE INFO ---------- */
 .page-info {
   padding: 20px;
   font-size: 14px;
@@ -278,7 +267,6 @@ html, body {
   font-weight: 600;
 }
 
-/* ---------- MODAL ---------- */
 #pastWorkOverlay {
   position: fixed;
   inset: 0;
@@ -348,23 +336,19 @@ html, body {
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
 <video class="bg-video" autoplay muted loop playsinline>
   <source src="background.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
 
-<!-- AUDIO -->
 <audio id="bgAudio" loop>
   <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
-<!-- VIEW COUNTER -->
 <div class="view-counter">
   Views: <span id="viewCount">0</span>
 </div>
 
-<!-- AUDIO CONTROL PANEL -->
 <div class="audio-panel">
   <div class="audio-wheel" id="audioWheel" style="--progress: 0%">
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-120q-66 0-113-47T80-280q0-66 47-113t113-47q23 0 42.5 5.5T320-418v-342l480-80v480q0 66-47 113t-113 47q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T720-498v-165l-320 63v320q0 66-47 113t-113 47Z"/></svg>
@@ -430,7 +414,6 @@ html, body {
 
     <div class="divider"></div>
 
-    <!-- LANGUAGES -->
     <div class="section">
       <div class="section-header">
         Languages & Libraries
@@ -445,14 +428,12 @@ html, body {
       </div>
     </div>
 
-    <!-- PAST WORK -->
     <div class="section" onclick="openPastWork()">
       <div class="section-header">
         Past Work
       </div>
     </div>
 
-    <!-- WERE HIRING -->
     <div class="section">
       <div class="section-header">
         We're Hiring!
@@ -468,7 +449,6 @@ html, body {
   </div>
 </div>
 
-<!-- MODAL -->
 <div id="pastWorkOverlay">
   <div class="pastwork-modal">
     <button class="close-btn" onclick="closePastWork()">×</button>
